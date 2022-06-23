@@ -36,6 +36,8 @@ template:
                 >Add to cart</button>
             </div>
         </div>
+        <review-list :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
     </div>`,
 
 data(){
@@ -43,6 +45,7 @@ data(){
         product: 'Socks',
         brand: 'Vue Mastery',
         selectedVariant: 0,
+        reviews: [],
         details : ['50% cotton', '30% wool', '20% polyester'],
         variants: [
             {
@@ -68,6 +71,9 @@ methods: {
     },
     updateVariant(index){
         this.selectedVariant = index
+    },
+    addReview(review){
+        this.reviews.push(review)
     }
 },
 computed: {
